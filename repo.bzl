@@ -53,6 +53,8 @@ def _vulkan_sdk_repo_impl(rctx):
 
         # C/C++ Libraries
         "vulkan",
+        "shaderc",
+        "glslang",
     ]
 
     build_file_content = ""
