@@ -10,7 +10,7 @@ _vulkan_sdk_well_knowns = {
         ),
         linux = struct(
             url = "https://sdk.lunarg.com/sdk/download/1.2.162.1/linux/vulkansdk-linux-x86_64-1.2.162.1.tar.gz",
-            strip_prefix = "1.2.162.1/x86_64",
+            strip_prefix = "1.2.162.1",
             sha256 = "8314c1b000ed3f18f9e3c1f32c496dd3e654662249861371aa1724edef809177",
         ),
         macos = struct(
@@ -27,7 +27,7 @@ _vulkan_sdk_well_knowns = {
         ),
         linux = struct(
             url = "https://sdk.lunarg.com/sdk/download/1.1.114.0/linux/vulkansdk-linux-x86_64-1.1.114.0.tar.gz",
-            strip_prefix = "1.1.114.0/x86_64",
+            strip_prefix = "1.1.114.0",
             sha256 = "796d3eedea9d2f5fd0720e5ebd9cc6072c95d5e958abea6d07b121db3973e968",
         ),
         macos = struct(
