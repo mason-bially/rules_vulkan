@@ -112,6 +112,7 @@ def vulkan_repos(version = "1.2.162.1"):
         strip_prefix = vulkan_sdk_info.linux.strip_prefix,
         sha256 = vulkan_sdk_info.linux.sha256,
         build_file = ws + ":vulkan_sdk_linux.BUILD",
+        patches = [ws + ":linuxglsl.patch"],
     )
 
     http_archive(

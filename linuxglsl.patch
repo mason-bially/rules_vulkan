@@ -1,0 +1,10 @@
+--- source/glslang/BUILD.bazel
++++ source/glslang/BUILD.bazel
+@@ -109,6 +109,7 @@
+         "glslang/Public/ShaderLang.h",
+         ":gen_build_info_h",
+     ],
++    includes = ["."],
+     copts = COMMON_COPTS,
+     defines = [
+         "AMD_EXTENSIONS",
