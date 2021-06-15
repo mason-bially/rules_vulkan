@@ -80,7 +80,7 @@ cc_library(
 )
 
 cc_import(
-    name = "shaderc_combined",
+    name = "shaderc_combined_lib",
     visibility = ["//visibility:private"],
     static_library = "Lib/shaderc_combined.lib",
 )
@@ -95,16 +95,99 @@ cc_library(
         "Include/shaderc/status.h",
         "Include/shaderc/visibility.h",
     ],
-    deps = [":shaderc_combined"],
+    deps = [":shaderc_combined_lib"],
+)
+
+
+cc_import(
+    name = "glslang_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/glslang.lib",
+)
+cc_import(
+    name = "GenericCodeGen_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/GenericCodeGen.lib",
+)
+cc_import(
+    name = "OGLCompiler_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/OGLCompiler.lib",
+)
+cc_import(
+    name = "OSDependent_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/OSDependent.lib",
+)
+cc_import(
+    name = "MachineIndependent_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/MachineIndependent.lib",
+)
+cc_import(
+    name = "HLSL_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/HLSL.lib",
+)
+
+cc_import(
+    name = "spirv-cross-glsl_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/spirv-cross-glsl.lib",
+)
+
+cc_import(
+    name = "SPIRV_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV.lib",
+)
+cc_import(
+    name = "SPIRV-Tools_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV-Tools.lib",
+)
+cc_import(
+    name = "SPIRV-Tools-link_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV-Tools-link.lib",
+)
+cc_import(
+    name = "SPIRV-Tools-opt_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV-Tools-opt.lib",
+)
+cc_import(
+    name = "SPIRV-Tools-reduce_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV-Tools-reduce.lib",
+)
+cc_import(
+    name = "SPIRV-Tools-shared_lib",
+    visibility = ["//visibility:private"],
+    static_library = "Lib/SPIRV-Tools-shared.lib",
 )
 
 cc_library(
     name = "glslang",
-    strip_include_prefix = "glslang",
-    includes = [ "glslang" ],
-    deps = [ "//glslang:glslang" ]
-    deps = [ "//glslang:SPIRV" ]
+    strip_include_prefix = "Include",
+    hdrs = glob(["Include/glslang/**/*.h*"]),
+    deps = [
+        #":glslang_lib",
+        #":HLSL_lib",
+        ":GenericCodeGen_lib",
+        ":OGLCompiler_lib",
+        ":OSDependent_lib",
+        ":MachineIndependent_lib",
+        #":spirv-cross-glsl_lib",
+        ":SPIRV_lib",
+        ":SPIRV-Tools_lib",
+        #":SPIRV-Tools-link_lib",
+        ":SPIRV-Tools-opt_lib",
+        #":SPIRV-Tools-reduce_lib",
+        #":SPIRV-Tools-shared_lib",
+    ],
 )
+
 
 # GLSL.std.450.h
 # spirv.h
