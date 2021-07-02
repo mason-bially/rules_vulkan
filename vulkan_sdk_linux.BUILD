@@ -101,5 +101,8 @@ cc_library(
     name = "glslang",
     strip_include_prefix = "source/glslang",
     includes = [ "source/glslang" ],
-    deps = [ "//source/glslang:glslang" ]
+    deps = [
+        "//source/glslang:glslang", 
+        "//source/glslang:SPIRV",
+    ]
 )
