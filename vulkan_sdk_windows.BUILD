@@ -168,10 +168,19 @@ cc_import(
 )
 
 cc_library(
+    name = "glslang_SPIRV",
+    strip_include_prefix = "Include/glslang",
+    hdrs = glob(["Include/glslang/SPIRV/*.h*"]),
+    deps = [
+    ],
+)
+
+cc_library(
     name = "glslang",
     strip_include_prefix = "Include",
     hdrs = glob(["Include/glslang/**/*.h*"]),
     deps = [
+        ":glslang_SPIRV",
         #":glslang_lib",
         #":HLSL_lib",
         ":GenericCodeGen_lib",
