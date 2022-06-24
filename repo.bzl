@@ -2,6 +2,24 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@com_github_zaucy_rules_7zip//:repo.bzl", "http_7z")
 
 _vulkan_sdk_well_knowns = {
+    "1.3.216.0": struct(
+        windows = struct(
+            url = "https://sdk.lunarg.com/sdk/download/1.3.216.0/windows/VulkanSDK-1.3.216.0-Installer.exe",
+            strip_prefix = "",
+            sha256 = "32c0bba765bd42d6e321fbb14a0abbb6d305da06f53db7d369a3cc295de111f8",
+        ),
+        linux = struct(
+            url = "https://sdk.lunarg.com/sdk/download/1.3.216.0/linux/vulkansdk-linux-x86_64-1.3.216.0.tar.gz",
+            strip_prefix = "1.3.216.0",
+            sha256 = "2cb10cb94ac656e9e454f1f5ae48e8a833253af5fe22562d27310db45b579212",
+        ),
+        #### Uhhhh get fucked I guess?
+        macos = struct(
+            url = "https://sdk.lunarg.com/sdk/download/1.3.216.0/mac/vulkansdk-macos-1.3.216.0.???",
+            strip_prefix = "vulkansdk-macos-1.3.216.0/macOS",
+            sha256 = "",
+        ),
+    ),
     "1.2.162.1": struct(
         windows = struct(
             url = "https://sdk.lunarg.com/sdk/download/1.2.162.1/windows/VulkanSDK-1.2.162.1-Installer.exe",
@@ -93,7 +111,7 @@ _vulkan_sdk_repo = repository_rule(
     },
 )
 
-def vulkan_repos(version = "1.2.162.1"):
+def vulkan_repos(version = "1.3.216.0"):
     ws = "@com_github_zaucy_rules_vulkan//"
 
     vulkan_sdk_info = _vulkan_sdk_well_knowns[version]
